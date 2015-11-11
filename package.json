@@ -1,0 +1,29 @@
+{
+  "name": "chancer",
+  "version": "0.1.0",
+  "description": "Different types of random behaviour in Javascript",
+  "keywords": [
+    "random",
+    "randomness",
+    "array",
+    "integer",
+    "float",
+    "cryptography"
+  ],
+  "author": "Alex Kilgour",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/howlingmad/chancer.git"
+  },
+  "homepage": "https://github.com/howlingmad/chancer",
+  "bugs": "https://github.com/howlingmad/chancer/issues",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  },
+  "devDependencies": {
+    "browserify": "^11",
+    "uglify-js": "^2"
+  },
+  "main": "./lib/chancer.js"
+}
