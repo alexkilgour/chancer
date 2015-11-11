@@ -1,6 +1,6 @@
 {
   "name": "chancer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tools for generating different types of random behaviour in Javascript",
   "keywords": [
     "random",
