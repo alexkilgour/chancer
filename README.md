@@ -22,6 +22,7 @@ On the client side, you can include the built version of Chancer in your page (f
 
 ```html
 <script src="chancer.js"></script>
+```
 
 License
 -------
