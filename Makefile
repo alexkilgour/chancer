@@ -12,4 +12,3 @@ bundle:
 	@echo "/*! Chancer $(VERSION) | $(HOMEPAGE) */" > build/chancer.min.js
 	@./node_modules/.bin/browserify ./lib/chancer --standalone chancer >> build/chancer.js
 	@./node_modules/.bin/browserify ./lib/chancer --standalone chancer | ./node_modules/.bin/uglifyjs >> build/chancer.min.js
-	@./node_modules/.bin/browserify ./test/unit/setup ./test/unit/lib/chancer > build/test.js
