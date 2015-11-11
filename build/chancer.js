@@ -44,8 +44,10 @@ function randomInt (min, max) {
 // Returns a 0 or 1 to represent a coin toss
 // Optionally associate any other values for the coin sides (true/false, yes/no, heads/tails, etc)
 function coinToss (heads, tails) {
-    var first = (heads) ? heads : 0;
-    var second = (tails) ? tails : 1;
+    var first = (typeof heads !== 'undefined') ? heads : 0;
+    var second = (typeof tails !== 'undefined') ? tails : 1;
+    console.log(first);
+    console.log(second);
     return (Math.floor(Math.random() * 2) === 0) ? first : second;
 }
 
@@ -86,7 +88,6 @@ function randomArray (min, max, total) {
     }
 }
 function generateArray(min, max, total) {
-    console.log(total);
     var arr = [];
     while (arr.length < total) {
         var randomNumber = chancer.randomInt(min, max);
