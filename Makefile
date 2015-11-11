@@ -5,15 +5,26 @@ C_RESET=\x1b[0m
 VERSION=`node -e "process.stdout.write(require('./package.json').version)"`
 HOMEPAGE=`node -e "process.stdout.write(require('./package.json').homepage)"`
 
+# Group targets
+ci: lint
+
 # Install dependencies
 deps:
 	@echo "$(C_CYAN)> installing dependencies$(C_RESET)"
 	@npm install
 
+# Lint JavaScript
+lint: jshint jscs
+
 # Run JSHint
 jshint:
 	@echo "$(C_CYAN)> linting javascript$(C_RESET)"
 	@./node_modules/.bin/jshint .
+
+# Run JavaScript Code Style
+jscs:
+	@echo "$(C_CYAN)> checking javascript code style$(C_RESET)"
+	@./node_modules/.bin/jscs .
 
 # Bundle client-side JavaScript
 bundle:

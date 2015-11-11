@@ -27,7 +27,8 @@ function random () {
 function randomFloat (min, max) {
     if (!isNaN(min) && !isNaN(max)) {
         return Math.random() * (max - min) + min;
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -36,7 +37,8 @@ function randomFloat (min, max) {
 function randomInt (min, max) {
     if (!isNaN(min) && !isNaN(max)) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -46,8 +48,6 @@ function randomInt (min, max) {
 function coinToss (heads, tails) {
     var first = (typeof heads !== 'undefined') ? heads : 0;
     var second = (typeof tails !== 'undefined') ? tails : 1;
-    console.log(first);
-    console.log(second);
     return (Math.floor(Math.random() * 2) === 0) ? first : second;
 }
 
@@ -55,7 +55,8 @@ function coinToss (heads, tails) {
 function fromArray (obj) {
     if (typeof obj !== 'undefined' && obj && obj.constructor === Array) {
         return obj[Math.floor(Math.random() * obj.length)];
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -64,17 +65,25 @@ function fromArray (obj) {
 function shuffleArray (obj) {
     if (typeof obj !== 'undefined' && obj && obj.constructor === Array) {
         return shuffle(obj);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
 function shuffle (arr) {
-    for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+    for (var i = arr.length - 1; i >= 0; i--) {
+        var j = chancer.randomInt(0, i);
+        if (j !== i) {
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+    }
     return arr;
 }
 
-// Returns an array of integers between <min> (inclusive) and <max> (inclusive) with optional <total>
-// If no total specified return all possible values between <min> and <max>
+// Returns an array of integers between <min> (inclusive) and <max> (inclusive)
+// If no <total> specified return all possible values between <min> and <max>
 function randomArray (min, max, total) {
     if (!isNaN(min) && !isNaN(max)) {
         var num = (total) ? total : (max - min) + 1;
@@ -83,17 +92,18 @@ function randomArray (min, max, total) {
             arr = generateArray(min, max, num);
         }
         return arr;
-    } else {
+    }
+    else {
         return undefined;
     }
 }
-function generateArray(min, max, total) {
+function generateArray (min, max, total) {
     var arr = [];
     while (arr.length < total) {
         var randomNumber = chancer.randomInt(min, max);
         var found = false;
         for (var i = 0; i < arr.length; i++) {
-            if (arr[i] === randomNumber){ 
+            if (arr[i] === randomNumber) {
                 found = true;
                 break;
             }
@@ -114,7 +124,8 @@ function unsigned8 (total) {
         var num = (total) ? total : 1;
         var cryptoStore = new Uint8Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -126,7 +137,8 @@ function signed8 (total) {
         var num = (total) ? total : 1;
         var cryptoStore = new Int8Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -138,7 +150,8 @@ function unsigned16 (total) {
         var num = (total) ? total : 1;
         var cryptoStore = new Uint16Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -150,7 +163,8 @@ function signed16 (total) {
         var num = (total) ? total : 1;
         var cryptoStore = new Int16Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -162,7 +176,8 @@ function unsigned32 (total) {
         var num = (total) ? total : 1;
         var cryptoStore = new Uint32Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
@@ -174,7 +189,8 @@ function signed32 (total) {
         var num = (total) ? total : 1;
         var cryptoStore = new Int32Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
-    } else {
+    }
+    else {
         return undefined;
     }
 }
