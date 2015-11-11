@@ -1,7 +1,7 @@
 Chancer
 =======
 
-Different types of random behaviour in Javascript.
+Tools for generating different types of random behaviour in Javascript.
 
 [![NPM version][shield-npm]][info-npm]
 [![Node.js version support][shield-node]][info-node]
