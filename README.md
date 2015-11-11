@@ -6,7 +6,7 @@ Different types of random behaviour in Javascript.
 Getting Started
 ---------------
 
-You can use Chancer on the server side with [Node.js][node] and npm:
+You can use Chancer on the server side with [Node.js](node) and npm:
 
 ```sh
 npm install chancer
