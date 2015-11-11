@@ -10,6 +10,11 @@ deps:
 	@echo "$(C_CYAN)> installing dependencies$(C_RESET)"
 	@npm install
 
+# Run JSHint
+jshint:
+	@echo "$(C_CYAN)> linting javascript$(C_RESET)"
+	@./node_modules/.bin/jshint .
+
 # Bundle client-side JavaScript
 bundle:
 	@echo "$(C_CYAN)> bundling client-side JavaScript$(C_RESET)"

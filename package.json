@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "browserify": "^11",
-    "uglify-js": "^2"
+    "uglify-js": "^2",
+    "jshint": "^2"
   },
   "main": "./lib/chancer.js"
 }

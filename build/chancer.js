@@ -44,9 +44,9 @@ function randomInt (min, max) {
 // Returns a 0 or 1 to represent a coin toss
 // Optionally associate any other values for the coin sides (true/false, yes/no, heads/tails, etc)
 function coinToss (heads, tails) {
-    var heads = (heads) ? heads : 0;
-    var tails = (tails) ? tails : 1;
-    return (Math.floor(Math.random() * 2) === 0) ? heads : tails;
+    var first = (heads) ? heads : 0;
+    var second = (tails) ? tails : 1;
+    return (Math.floor(Math.random() * 2) === 0) ? first : second;
 }
 
 // Returns a random item from an array
@@ -69,43 +69,48 @@ function shuffleArray (obj) {
 function shuffle (arr) {
     for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
     return arr;
-};
+}
 
 // Returns an array of integers between <min> (inclusive) and <max> (inclusive) with optional <total>
 // If no total specified return all possible values between <min> and <max>
 function randomArray (min, max, total) {
     if (!isNaN(min) && !isNaN(max)) {
-        var total = (total) ? total : (max - min) + 1;
-        var arr = undefined;
-        if (!isNaN(total) && (((max - min) + 1) >= total)) {
-            arr = [];
-            while (arr.length < total) {
-                var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-                var found = false;
-                for (var i = 0; i < arr.length; i++) {
-                    if (arr[i] === randomNumber){ 
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    arr[arr.length] = randomNumber;
-                }
-            }
+        var num = (total) ? total : (max - min) + 1;
+        var arr;
+        if (!isNaN(num) && (((max - min) + 1) >= num)) {
+            arr = generateArray(min, max, num);
         }
         return arr;
     } else {
         return undefined;
     }
 }
+function generateArray(min, max, total) {
+    console.log(total);
+    var arr = [];
+    while (arr.length < total) {
+        var randomNumber = chancer.randomInt(min, max);
+        var found = false;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === randomNumber){ 
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            arr[arr.length] = randomNumber;
+        }
+    }
+    return arr;
+}
 
 /* Cryptographic Randomness */
 
 // Returns and array containing unsigned 8-bit integers
-function unsigned8 (num) {
+function unsigned8 (total) {
     var cryptoObj = window.crypto || window.msCrypto || null;
     if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint8Array' in window) {
-        var num = (num) ? num : 1;
+        var num = (total) ? total : 1;
         var cryptoStore = new Uint8Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
     } else {
@@ -114,10 +119,10 @@ function unsigned8 (num) {
 }
 
 // Returns and array containing signed 8-bit integers
-function signed8 (num) {
+function signed8 (total) {
     var cryptoObj = window.crypto || window.msCrypto || null;
     if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint8Array' in window) {
-        var num = (num) ? num : 1;
+        var num = (total) ? total : 1;
         var cryptoStore = new Int8Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
     } else {
@@ -126,10 +131,10 @@ function signed8 (num) {
 }
 
 // Returns and array containing unsigned 16-bit integers
-function unsigned16 (num) {
+function unsigned16 (total) {
     var cryptoObj = window.crypto || window.msCrypto || null;
     if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint16Array' in window) {
-        var num = (num) ? num : 1;
+        var num = (total) ? total : 1;
         var cryptoStore = new Uint16Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
     } else {
@@ -138,10 +143,10 @@ function unsigned16 (num) {
 }
 
 // Returns and array containing signed 16-bit integers
-function signed16 (num) {
+function signed16 (total) {
     var cryptoObj = window.crypto || window.msCrypto || null;
     if (cryptoObj && 'getRandomValues' in cryptoObj && 'Int16Array' in window) {
-        var num = (num) ? num : 1;
+        var num = (total) ? total : 1;
         var cryptoStore = new Int16Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
     } else {
@@ -150,10 +155,10 @@ function signed16 (num) {
 }
 
 // Returns and array containing unsigned 32-bit integers
-function unsigned32 (num) {
+function unsigned32 (total) {
     var cryptoObj = window.crypto || window.msCrypto || null;
     if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint32Array' in window) {
-        var num = (num) ? num : 1;
+        var num = (total) ? total : 1;
         var cryptoStore = new Uint32Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
     } else {
@@ -162,10 +167,10 @@ function unsigned32 (num) {
 }
 
 // Returns and array containing signed 32-bit integers
-function signed32 (num) {
+function signed32 (total) {
     var cryptoObj = window.crypto || window.msCrypto || null;
     if (cryptoObj && 'getRandomValues' in cryptoObj && 'Int32Array' in window) {
-        var num = (num) ? num : 1;
+        var num = (total) ? total : 1;
         var cryptoStore = new Int32Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
     } else {
