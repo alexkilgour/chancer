@@ -3,6 +3,8 @@ Chancer
 
 Different types of random behaviour in Javascript.
 
+[![Build Status](https://travis-ci.org/howlingmad/chancer.svg?branch=master)](https://travis-ci.org/howlingmad/chancer)
+
 Getting Started
 ---------------
 
