@@ -19,7 +19,7 @@
   "bugs": "https://github.com/howlingmad/chancer/issues",
   "license": "MIT",
   "engines": {
-    "node": ">=0.6"
+    "node": ">=0.10"
   },
   "devDependencies": {
     "browserify": "^11",
