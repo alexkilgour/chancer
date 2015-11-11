@@ -3,7 +3,11 @@ Chancer
 
 Different types of random behaviour in Javascript.
 
-[![Build Status](https://travis-ci.org/howlingmad/chancer.svg?branch=master)](https://travis-ci.org/howlingmad/chancer)
+[![NPM version][shield-npm]][info-npm]
+[![Node.js version support][shield-node]][info-node]
+[![Build status][shield-build]][info-build]
+[![Code coverage][shield-coverage]][info-coverage]
+[![MIT licensed][shield-license]][info-license]
 
 Getting Started
 ---------------
@@ -18,3 +22,22 @@ On the client side, you can include the built version of Chancer in your page (f
 
 ```html
 <script src="chancer.js"></script>
+
+License
+-------
+
+Chancer is licensed under the [MIT][info-license] license.  
+Copyright &copy; 2015, Alex Kilgour
+
+[info-coverage]: https://coveralls.io/github/howlingmad/chancer
+[info-license]: LICENSE
+[info-node]: package.json
+[info-npm]: https://www.npmjs.com/package/chancer
+[info-build]: https://travis-ci.org/howlingmad/chancer
+
+[shield-coverage]: https://img.shields.io/coveralls/howlingmad/chancer.svg
+[shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
+[shield-node]: https://img.shields.io/badge/node.js%20support-0.10–4-brightgreen.svg
+[shield-npm]: https://img.shields.io/npm/v/chancer.svg
+
+[shield-build]: https://img.shields.io/travis/howlingmad/chancer/master.svg
