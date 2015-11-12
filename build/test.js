@@ -9,13 +9,7 @@ var chancer = module.exports = {
     fromArray: fromArray,
     shuffleArray: shuffleArray,
     randomArray: randomArray,
-    unsigned8: unsigned8,
-    signed8: signed8,
-    unsigned16: unsigned16,
-    signed16: signed16,
-    unsigned32: unsigned32,
-    signed32: signed32,
-    cryptoSupports: cryptoSupports
+    randomUUID: randomUUID
 };
 
 // Returns a floating-point number between 0 and 1
@@ -115,93 +109,23 @@ function generateArray (min, max, total) {
     return arr;
 }
 
-/* Cryptographic Randomness */
-
-// Are the cryptographic methods supported
-function cryptoSupports (method) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && method in window) {
-        return cryptoObj;
+// Returns a random value as a universally unique identifier (UUID) version 4 (RFC4122)
+// xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
+// where x is any hexadecimal digit and y is one of 8, 9, A, or B
+// e.g., efe1f2aa-1e99-40f2-83fa-8519acd8c34c
+function randomUUID () {
+    var hex = '0123456789ABCDEF';
+    var result = [];
+    for (var i = 0; i < 36; i++) {
+        result[i] = Math.floor(Math.random() * 0x10);
     }
-    return undefined;
-}
-
-// Returns and array containing unsigned 8-bit integers
-function unsigned8 (total) {
-    var cryptoObj = chancer.cryptoSupports('Uint8Array');
-    if (cryptoObj) {
-        var num = (total) ? total : 1;
-        var cryptoStore = new Uint8Array(num);
-        return cryptoObj.getRandomValues(cryptoStore);
+    result[14] = 4;
+    result[19] = (result[19] & 0x3) | 0x8;
+    for (var i = 0; i < 36; i++) {
+        result[i] = hex[result[i]];
     }
-    else {
-        return undefined;
-    }
-}
-
-// Returns and array containing signed 8-bit integers
-function signed8 (total) {
-    var cryptoObj = chancer.cryptoSupports('Int8Array');
-    if (cryptoObj) {
-        var num = (total) ? total : 1;
-        var cryptoStore = new Int8Array(num);
-        return cryptoObj.getRandomValues(cryptoStore);
-    }
-    else {
-        return undefined;
-    }
-}
-
-// Returns and array containing unsigned 16-bit integers
-function unsigned16 (total) {
-    var cryptoObj = chancer.cryptoSupports('Uint16Array');
-    if (cryptoObj) {
-        var num = (total) ? total : 1;
-        var cryptoStore = new Uint16Array(num);
-        return cryptoObj.getRandomValues(cryptoStore);
-    }
-    else {
-        return undefined;
-    }
-}
-
-// Returns and array containing signed 16-bit integers
-function signed16 (total) {
-    var cryptoObj = chancer.cryptoSupports('Int16Array');
-    if (cryptoObj) {
-        var num = (total) ? total : 1;
-        var cryptoStore = new Int16Array(num);
-        return cryptoObj.getRandomValues(cryptoStore);
-    }
-    else {
-        return undefined;
-    }
-}
-
-// Returns and array containing unsigned 32-bit integers
-function unsigned32 (total) {
-    var cryptoObj = chancer.cryptoSupports('Uint32Array');
-    if (cryptoObj) {
-        var num = (total) ? total : 1;
-        var cryptoStore = new Uint32Array(num);
-        return cryptoObj.getRandomValues(cryptoStore);
-    }
-    else {
-        return undefined;
-    }
-}
-
-// Returns and array containing signed 32-bit integers
-function signed32 (total) {
-    var cryptoObj = chancer.cryptoSupports('Int32Array');
-    if (cryptoObj) {
-        var num = (total) ? total : 1;
-        var cryptoStore = new Int32Array(num);
-        return cryptoObj.getRandomValues(cryptoStore);
-    }
-    else {
-        return undefined;
-    }
+    result[8] = result[13] = result[18] = result[23] = '-';
+    return result.join('');
 }
 
 },{}],2:[function(require,module,exports){
@@ -15645,20 +15569,19 @@ describe('lib/chancer', function () {
 
     });
 
-    describe('chancer.unsigned8()', function () {
+    describe('chancer.randomUUID()', function () {
         var result;
+        var regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
 
         beforeEach(function () {
-            chancer.cryptoSupports = sinon.stub().withArgs('foo').returns();
-            result = chancer.unsigned8();
+            result = chancer.randomUUID();
         });
 
-        it('should return an array containing unsigned 8-bit integers', function () {
-            assert.isArray(result);
+        it('should return a random value as a universally unique identifier (UUID) version 4', function () {
+            proclaim.match(result, regex);
         });
 
     });
-
 });
 
 },{"../../lib/chancer":1,"chai":10,"proclaim":46,"sinon":47}]},{},[75]);

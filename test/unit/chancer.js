@@ -120,18 +120,17 @@ describe('lib/chancer', function () {
 
     });
 
-    describe('chancer.unsigned8()', function () {
+    describe('chancer.randomUUID()', function () {
         var result;
+        var regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
 
         beforeEach(function () {
-            chancer.cryptoSupports = sinon.stub().withArgs('foo').returns();
-            result = chancer.unsigned8();
+            result = chancer.randomUUID();
         });
 
-        it('should return an array containing unsigned 8-bit integers', function () {
-            assert.isArray(result);
+        it('should return a random value as a universally unique identifier (UUID) version 4', function () {
+            proclaim.match(result, regex);
         });
 
     });
-
 });
