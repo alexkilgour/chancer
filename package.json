@@ -28,6 +28,7 @@
     "jscs": "^2",
     "mocha": "^2",
     "sinon": "^1",
+    "proclaim": "^3",
     "coveralls": "^2",
     "istanbul": "~0.4"
   },

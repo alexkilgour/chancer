@@ -38,7 +38,7 @@ test-unit:
 test-coverage:
 	@echo "$(C_CYAN)> running unit tests with coverage$(C_RESET)"
 	@./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- ./test/unit --reporter spec --recursive
-	@./node_modules/.bin/istanbul check-coverage --statement 0 --branch 0 --function 0
+	@./node_modules/.bin/istanbul check-coverage --statement 90 --branch 90 --function 90
 
 # Bundle client-side JavaScript
 bundle:

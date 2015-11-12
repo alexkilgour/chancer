@@ -1,7 +1,6 @@
 'use strict';
 
-var sinon  = require('sinon');
-var assert = require('assert');
+var assert = require('proclaim');
 
 describe('lib/chancer', function () {
     var chancer;
@@ -11,6 +10,24 @@ describe('lib/chancer', function () {
     });
 
     it('should be an object', function () {
-        assert.strictEqual(typeof chancer, 'object', 'chancer is an object');
+        assert.isObject(chancer);
+    });
+
+    it('should have a `random` method', function () {
+        assert.isFunction(chancer.random);
+    });
+
+    describe('chancer.random()', function () {
+        var result;
+
+        beforeEach(function () {
+            result = chancer.random();
+        });
+
+        it('should return a floating-point number between 0 and 1', function () {
+            assert.greaterThanOrEqual(result, 0);
+            assert.lessThan(result, 1);
+        });
+
     });
 });
