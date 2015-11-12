@@ -1,5 +1,6 @@
 'use strict';
 
+var sinon  = require('sinon');
 var assert = require('proclaim');
 var expect = require('chai').expect;
 
@@ -115,6 +116,20 @@ describe('lib/chancer', function () {
         it('should return an array of integers between 0 and 10 (inclusive)', function () {
             assert.isArray(result);
             expect(result).to.deep.have.same.members(expected);
+        });
+
+    });
+
+    describe('chancer.unsigned8()', function () {
+        var result;
+
+        beforeEach(function () {
+            chancer.cryptoSupports = sinon.stub().withArgs('foo').returns();
+            result = chancer.unsigned8();
+        });
+
+        it('should return an array containing unsigned 8-bit integers', function () {
+            assert.isArray(result);
         });
 
     });

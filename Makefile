@@ -47,6 +47,7 @@ bundle:
 	@echo "/*! Chancer $(VERSION) | $(HOMEPAGE) */" > build/chancer.min.js
 	@./node_modules/.bin/browserify ./lib/chancer --standalone chancer >> build/chancer.js
 	@./node_modules/.bin/browserify ./lib/chancer --standalone chancer | ./node_modules/.bin/uglifyjs >> build/chancer.min.js
+	@echo "$(C_CYAN)> creating test file$(C_RESET)"
 	@./node_modules/.bin/browserify ./test/unit/chancer > build/test.js
 
 .PHONY: test

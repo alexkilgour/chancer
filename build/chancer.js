@@ -1,4 +1,4 @@
-/*! Chancer 0.1.0 | https://github.com/howlingmad/chancer */
+/*! Chancer 0.2.0 | https://github.com/howlingmad/chancer */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.chancer = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
@@ -15,7 +15,8 @@ var chancer = module.exports = {
     unsigned16: unsigned16,
     signed16: signed16,
     unsigned32: unsigned32,
-    signed32: signed32
+    signed32: signed32,
+    cryptoSupports: cryptoSupports
 };
 
 // Returns a floating-point number between 0 and 1
@@ -117,10 +118,19 @@ function generateArray (min, max, total) {
 
 /* Cryptographic Randomness */
 
+// Are the cryptographic methods supported
+function cryptoSupports (method) {
+    var cryptoObj = window.crypto || window.msCrypto || null;
+    if (cryptoObj && 'getRandomValues' in cryptoObj && method in window) {
+        return cryptoObj;
+    }
+    return undefined;
+}
+
 // Returns and array containing unsigned 8-bit integers
 function unsigned8 (total) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint8Array' in window) {
+    var cryptoObj = chancer.cryptoSupports('Uint8Array');
+    if (cryptoObj) {
         var num = (total) ? total : 1;
         var cryptoStore = new Uint8Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
@@ -132,8 +142,8 @@ function unsigned8 (total) {
 
 // Returns and array containing signed 8-bit integers
 function signed8 (total) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint8Array' in window) {
+    var cryptoObj = chancer.cryptoSupports('Int8Array');
+    if (cryptoObj) {
         var num = (total) ? total : 1;
         var cryptoStore = new Int8Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
@@ -145,8 +155,8 @@ function signed8 (total) {
 
 // Returns and array containing unsigned 16-bit integers
 function unsigned16 (total) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint16Array' in window) {
+    var cryptoObj = chancer.cryptoSupports('Uint16Array');
+    if (cryptoObj) {
         var num = (total) ? total : 1;
         var cryptoStore = new Uint16Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
@@ -158,8 +168,8 @@ function unsigned16 (total) {
 
 // Returns and array containing signed 16-bit integers
 function signed16 (total) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && 'Int16Array' in window) {
+    var cryptoObj = chancer.cryptoSupports('Int16Array');
+    if (cryptoObj) {
         var num = (total) ? total : 1;
         var cryptoStore = new Int16Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
@@ -171,8 +181,8 @@ function signed16 (total) {
 
 // Returns and array containing unsigned 32-bit integers
 function unsigned32 (total) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && 'Uint32Array' in window) {
+    var cryptoObj = chancer.cryptoSupports('Uint32Array');
+    if (cryptoObj) {
         var num = (total) ? total : 1;
         var cryptoStore = new Uint32Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
@@ -184,8 +194,8 @@ function unsigned32 (total) {
 
 // Returns and array containing signed 32-bit integers
 function signed32 (total) {
-    var cryptoObj = window.crypto || window.msCrypto || null;
-    if (cryptoObj && 'getRandomValues' in cryptoObj && 'Int32Array' in window) {
+    var cryptoObj = chancer.cryptoSupports('Int32Array');
+    if (cryptoObj) {
         var num = (total) ? total : 1;
         var cryptoStore = new Int32Array(num);
         return cryptoObj.getRandomValues(cryptoStore);
