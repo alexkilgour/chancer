@@ -26,6 +26,11 @@ jscs:
 	@echo "$(C_CYAN)> checking javascript code style$(C_RESET)"
 	@./node_modules/.bin/jscs .
 
+# Run unit tests
+test-unit:
+	@echo "$(C_CYAN)> running unit tests$(C_RESET)"
+	@./node_modules/.bin/mocha ./test/unit --reporter spec --colors --recursive
+
 # Bundle client-side JavaScript
 bundle:
 	@echo "$(C_CYAN)> bundling client-side JavaScript$(C_RESET)"
