@@ -1,6 +1,6 @@
+// jscs:disable maximumLineLength
 'use strict';
 
-var sinon  = require('sinon');
 var assert = require('proclaim');
 var expect = require('chai').expect;
 
@@ -168,7 +168,7 @@ describe('lib/chancer', function () {
         it('should return a random value as a universally unique identifier (UUID) version 4', function () {
             var result = chancer.randomUUID();
             var regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
-            proclaim.match(result, regex);
+            assert.match(result, regex);
         });
     });
 });
