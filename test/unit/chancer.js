@@ -20,117 +20,155 @@ describe('lib/chancer', function () {
     });
 
     describe('chancer.random()', function () {
-        var result;
-
-        beforeEach(function () {
-            result = chancer.random();
-        });
-
         it('should return a floating-point number between 0 and 1', function () {
+            var result = chancer.random();
             assert.greaterThanOrEqual(result, 0);
             assert.lessThan(result, 1);
         });
+    });
 
+    it('should have a `randomFloat` method', function () {
+        assert.isFunction(chancer.randomFloat);
     });
 
     describe('chancer.randomFloat()', function () {
-        var result;
-
-        beforeEach(function () {
-            result = chancer.randomFloat(1,10);
-        });
-
         it('should return a floating-point number between 1 and 10', function () {
+            var result = chancer.randomFloat(1, 10);
             assert.greaterThanOrEqual(result, 1);
             assert.lessThan(result, 10);
         });
 
+        it('should return `undefined` if no arguments specified', function () {
+            var result = chancer.randomFloat();
+            assert.strictEqual(result, undefined);
+        });
+
+        it('should return `undefined` if no arguments are not numbers', function () {
+            var result = chancer.randomFloat('zero', 'one');
+            assert.strictEqual(result, undefined);
+        });
+    });
+
+    it('should have a `randomInt` method', function () {
+        assert.isFunction(chancer.randomInt);
     });
 
     describe('chancer.randomInt()', function () {
-        var result;
-
-        beforeEach(function () {
-            result = chancer.randomInt(1,10);
-        });
-
         it('should return a integer number between 1 and 10', function () {
+            var result = chancer.randomInt(1, 10);
             assert.greaterThanOrEqual(result, 1);
             assert.lessThanOrEqual(result, 10);
         });
 
+        it('should return `undefined` if no arguments specified', function () {
+            var result = chancer.randomInt();
+            assert.strictEqual(result, undefined);
+        });
+
+        it('should return `undefined` if no arguments are not numbers', function () {
+            var result = chancer.randomInt('zero', 'one');
+            assert.strictEqual(result, undefined);
+        });
+    });
+
+    it('should have a `coinToss` method', function () {
+        assert.isFunction(chancer.coinToss);
     });
 
     describe('chancer.coinToss()', function () {
-        var result;
-
-        beforeEach(function () {
-            result = chancer.coinToss();
-        });
-
         it('should return a 0 or 1 to represent a coin toss', function () {
-            assert.include([0,1], result);
+            var result = chancer.coinToss();
+            assert.include([0, 1], result);
         });
 
+        it('should return a true or false to represent a coin toss', function () {
+            var result = chancer.coinToss(true, false);
+            assert.include([true, false], result);
+        });
+
+        it('should return a heads or tails to represent a coin toss', function () {
+            var result = chancer.coinToss('heads', 'tails');
+            assert.include(['heads', 'tails'], result);
+        });
+    });
+
+    it('should have a `fromArray` method', function () {
+        assert.isFunction(chancer.fromArray);
     });
 
     describe('chancer.fromArray()', function () {
-        var result;
-
-        beforeEach(function () {
-            result = chancer.fromArray([0,1,2,3,4,5]);
-        });
-
         it('should return a random item from an array', function () {
+            var result = chancer.fromArray([0,1,2,3,4,5]);
             assert.include([0,1,2,3,4,5], result);
         });
 
+        it('should return `undefined` if no argument specified', function () {
+            var result = chancer.fromArray();
+            assert.strictEqual(result, undefined);
+        });
+
+        it('should return `undefined` if argument is not an array', function () {
+            var result = chancer.fromArray('[0,1,2,3,4,5]');
+            assert.strictEqual(result, undefined);
+        });
+    });
+
+    it('should have a `shuffleArray` method', function () {
+        assert.isFunction(chancer.shuffleArray);
     });
 
     describe('chancer.shuffleArray()', function () {
-        var result;
-        var expected;
-
-        beforeEach(function () {
-            result = chancer.shuffleArray([0,1,2,3,4,5]);
-            expected = [0,1,2,3,4,5];
-        });
-
         it('should return an array shuffled into a random order', function () {
+            var result = chancer.shuffleArray([0,1,2,3,4,5]);
+            var expected = [0,1,2,3,4,5];
             assert.isArray(result);
             expect(result).to.deep.have.same.members(expected);
             assert.notStrictEqual(result, expected);
         });
 
+        it('should return `undefined` if no argument specified', function () {
+            var result = chancer.shuffleArray();
+            assert.strictEqual(result, undefined);
+        });
+
+        it('should return `undefined` if argument is not an array', function () {
+            var result = chancer.shuffleArray('[0,1,2,3,4,5]');
+            assert.strictEqual(result, undefined);
+        });
+    });
+
+    it('should have a `randomArray` method', function () {
+        assert.isFunction(chancer.randomArray);
     });
 
     describe('chancer.randomArray()', function () {
-        var result;
-        var expected;
-
-        beforeEach(function () {
-            result = chancer.randomArray(0,10);
-            expected = [0,1,2,3,4,5,6,7,8,9,10];
-        });
-
         it('should return an array of integers between 0 and 10 (inclusive)', function () {
+            var result = chancer.randomArray(0, 10);
+            var expected = [0,1,2,3,4,5,6,7,8,9,10];
             assert.isArray(result);
             expect(result).to.deep.have.same.members(expected);
         });
 
+        it('should return an array of 5 integers between 0 and 10 (inclusive)', function () {
+            var result = chancer.randomArray(0, 10, 5);
+            var expected = [0,1,2,3,4,5,6,7,8,9,10];
+            assert.isArray(result);
+            assert.lengthEquals(5);
+            for (var i = 0; i < result.length; i++) {
+                expect(expected).to.contain(result[i]);
+            }
+        });
+    });
+
+    it('should have a `randomUUID` method', function () {
+        assert.isFunction(chancer.randomUUID);
     });
 
     describe('chancer.randomUUID()', function () {
-        var result;
-        var regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
-
-        beforeEach(function () {
-            result = chancer.randomUUID();
-        });
-
         it('should return a random value as a universally unique identifier (UUID) version 4', function () {
+            var result = chancer.randomUUID();
+            var regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
             proclaim.match(result, regex);
         });
-
     });
 });
