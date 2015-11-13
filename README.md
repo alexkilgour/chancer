@@ -44,8 +44,8 @@ chancer.random(); // 0.32831766246818006
 
 ### chancer.float( min, max )
 Generates a floating-point number between *min* (inclusive) and *max* (exclusive)   
-**min:** *(float)* Minimum inclusive number  
-**max:** *(float)* Maximum exclusive number  
+**min:** *(number)* Minimum inclusive number  
+**max:** *(number)* Maximum exclusive number  
 **return:** *(float)* Returns the floating point number
 ```js
 chancer.float(1, 10); // 2.794354454614222
@@ -53,8 +53,8 @@ chancer.float(1, 10); // 2.794354454614222
 
 ### chancer.int( min, max )
 Generates an integer between *min* (inclusive) and *max* (inclusive)  
-**min:** *(float)* Minimum inclusive number  
-**max:** *(float)* Maximum inclusive number  
+**min:** *(number)* Minimum inclusive number  
+**max:** *(number)* Maximum inclusive number  
 **return:** *(integer)* Returns the integer number
 ```js
 chancer.int(1, 10); // 3
