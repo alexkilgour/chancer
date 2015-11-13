@@ -18,11 +18,22 @@ You can use Chancer on the server side with [Node.js](node) and npm:
 npm install chancer
 ```
 
-On the client side, you can include the built version of Chancer in your page (found in [build/chancer.js](build/chancer.js)):
+On the client side, you can include Chancer in your page (found in [build/chancer.js](build/chancer.js)):
 
 ```html
 <script src="chancer.js"></script>
 ```
+
+Usage
+-----
+
+In Node.js you can include *Chancer* in your script by using require:
+
+```
+var chancer = require('chancer');
+```
+
+If you're including via a ```<script>``` tag, ```chancer``` is available as a global variable.
 
 ## Browser Support
 Tested in the following browsers
