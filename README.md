@@ -100,6 +100,13 @@ chancer.fillArray(1,10); // [3, 5, 4, 1, 6, 7, 8, 2, 10, 9]
 chancer.fillArray(1,100,10); // [40, 66, 74, 39, 17, 99, 50, 70, 6, 15]
 ```
 
+### chancer.uuid()
+Generates a random value as a universally unique identifier (UUID) version 4 (RFC4122)   
+**return:** *(string)* Returns string representation of a UUIDv4
+```js
+chancer.uuid(); // 73f765b2-958a-45fb-be10-b9fcebdd6838
+```
+
 ## Browser Support
 Tested in the following browsers
 
