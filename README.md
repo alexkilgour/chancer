@@ -29,11 +29,18 @@ Usage
 
 In Node.js you can include *Chancer* in your script by using require:
 
-```
+```js
 var chancer = require('chancer');
 ```
 
 If you're including via a ```<script>``` tag, ```chancer``` is available as a global variable.
+
+### chancer.random()
+Generates a floating-point number between 0 and 1  
+**return:** *(float)* Returns the floating point number
+```js
+chancer.random(); // 0.32831766246818006
+```
 
 ## Browser Support
 Tested in the following browsers
