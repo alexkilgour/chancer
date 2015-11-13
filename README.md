@@ -72,6 +72,14 @@ chancer.coinToss(true, false); // true
 chancer.coinToss('heads', 'tails'); // tails
 ```
 
+### chancer.fromArray( arr )
+Generates a random item from an array  
+**arr:** *(array)* Array of items  
+**return:** *(integer)* Returns the randomly selected item
+```js
+chancer.fromArray([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]); // 6
+```
+
 ## Browser Support
 Tested in the following browsers
 
