@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Chancer: Tools for generating different types of random behaviour in Javascript</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="normalize.css"/>
+    <link rel="stylesheet" href="browser.css"/>
+</head>
+    <body>
+        <div class="column">
+            <h1>Chancer</h1>
+            <h2>Tools for generating different types of random behaviour in Javascript</h2>
+            <div class="block" id="random">
+                <h3>chancer.random()</h3>
+                <p></p>
+            </div>
+            <div class="block" id="float">
+                <h3>chancer.float( <span>1, 10</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="int">
+                <h3>chancer.int( <span>1, 10</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="coinToss">
+                <h3>chancer.cointoss()</h3>
+                <p></p>
+            </div>
+            <div class="block" id="coinTossB">
+                <h3>chancer.cointoss( <span>true, false</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="coinTossC">
+                <h3>chancer.cointoss( <span>'heads', 'tails'</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="fromArray">
+                <h3>chancer.fromArray( <span>[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="shuffleArray">
+                <h3>chancer.shuffleArray( <span>[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="fillArray">
+                <h3>chancer.fillArray( <span>1, 10</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="fillArrayB">
+                <h3>chancer.fillArray( <span>1, 100, 10</span> )</h3>
+                <p></p>
+            </div>
+            <div class="block" id="uuid">
+                <h3>chancer.uuid()</h3>
+                <p></p>
+            </div>
+        </div>
+
+        <script src="../../build/chancer.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            $(function() {
+                var random = chancer.random();
+                $('#random').find('p').text(random);
+
+                var float = chancer.float(1,10);
+                $('#float').find('p').text(float);
+
+                var int = chancer.int(1,10);
+                $('#int').find('p').text(int);
+
+                var coinToss = chancer.coinToss();
+                $('#coinToss').find('p').text(coinToss);
+
+                var coinTossB = chancer.coinToss(true,false);
+                $('#coinTossB').find('p').text(coinTossB);
+
+                var coinTossC = chancer.coinToss('heads','tails');
+                $('#coinTossC').find('p').text(coinTossC);
+
+                var fromArray = chancer.fromArray([1,2,3,4,5,6,7,8,9]);
+                $('#fromArray').find('p').text(fromArray);
+
+                var shuffleArray = chancer.shuffleArray([1,2,3,4,5,6,7,8,9]);
+                $('#shuffleArray').find('p').text(shuffleArray);
+
+                var fillArray = chancer.fillArray(1,10);
+                $('#fillArray').find('p').text(fillArray);
+
+                var fillArrayB = chancer.fillArray(1,100,10);
+                $('#fillArrayB').find('p').text(fillArrayB);
+
+                var uuid = chancer.uuid();
+                $('#uuid').find('p').text(uuid);
+            });
+        </script>
+    </body>
+</html>
