@@ -80,6 +80,14 @@ Generates a random item from an array
 chancer.fromArray([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]); // 6
 ```
 
+### chancer.shuffleArray( arr )
+Generates an array shuffled into a random order  
+**arr:** *(array)* Array of items  
+**return:** *(integer)* Returns the array shuffled into a random order
+```js
+chancer.shuffleArray([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]); // [7, 3, 9, 4, 1, 6, 2, 5, 8]
+```
+
 ## Browser Support
 Tested in the following browsers
 
