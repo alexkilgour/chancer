@@ -18,7 +18,7 @@ You can use Chancer on the server side with [Node.js](node) and npm:
 npm install chancer
 ```
 
-On the client side, you can include Chancer in your page (found in [build/chancer.js](build/chancer.js)):
+On the client side, you can include *Chancer* in your page (found in [build/chancer.js](build/chancer.js)):
 
 ```html
 <script src="chancer.js"></script>
@@ -40,6 +40,24 @@ Generates a floating-point number between 0 and 1
 **return:** *(float)* Returns the floating point number
 ```js
 chancer.random(); // 0.32831766246818006
+```
+
+### chancer.float( min, max )
+Generates a floating-point number between *min* (inclusive) and *max* (exclusive)   
+**min:** *(float)* Minimum inclusive number  
+**max:** *(float)* Maximum exclusive number  
+**return:** *(float)* Returns the floating point number
+```js
+chancer.float(1, 10); // 2.794354454614222
+```
+
+### chancer.int( min, max )
+Generates an integer between *min* (inclusive) and *max* (inclusive)
+**min:** *(float)* Minimum inclusive number  
+**max:** *(float)* Maximum inclusive number  
+**return:** *(integer)* Returns the integer number
+```js
+chancer.int(1, 10); // 3
 ```
 
 ## Browser Support
