@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Chancer: Tools for generating different types of random behaviour in Javascript</title>
-    <meta name="robots" content="noindex">
+    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" href="normalize.css"/>
     <link rel="stylesheet" href="browser.css"/>
 </head>
@@ -58,50 +58,52 @@
             </div>
         </div>
 
-        <script src="../../build/chancer.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script>
-            $(function() {
-                var generate = function () {
-                    var random = chancer.random();
-                    $('#random').find('p').text(random);
+        <script type="text/javascript" charset="utf-8" src="../../build/chancer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+            (function($) {
+                $(function() {
+                    var generate = function () {
+                        var random = chancer.random();
+                        $('#random').find('p').text(random);
 
-                    var float = chancer.float(1,10);
-                    $('#float').find('p').text(float);
+                        var float = chancer.float(1,10);
+                        $('#float').find('p').text(float);
 
-                    var int = chancer.int(1,10);
-                    $('#int').find('p').text(int);
+                        var int = chancer.int(1,10);
+                        $('#int').find('p').text(int);
 
-                    var coinToss = chancer.coinToss();
-                    $('#coinToss').find('p').text(coinToss);
+                        var coinToss = chancer.coinToss();
+                        $('#coinToss').find('p').text(coinToss);
 
-                    var coinTossB = chancer.coinToss(true,false);
-                    $('#coinTossB').find('p').text(coinTossB);
+                        var coinTossB = chancer.coinToss(true,false);
+                        $('#coinTossB').find('p').text(coinTossB);
 
-                    var coinTossC = chancer.coinToss('heads','tails');
-                    $('#coinTossC').find('p').text(coinTossC);
+                        var coinTossC = chancer.coinToss('heads','tails');
+                        $('#coinTossC').find('p').text(coinTossC);
 
-                    var fromArray = chancer.fromArray([1,2,3,4,5,6,7,8,9]);
-                    $('#fromArray').find('p').text(fromArray);
+                        var fromArray = chancer.fromArray([1,2,3,4,5,6,7,8,9]);
+                        $('#fromArray').find('p').text(fromArray);
 
-                    var shuffleArray = chancer.shuffleArray([1,2,3,4,5,6,7,8,9]);
-                    $('#shuffleArray').find('p').text(shuffleArray);
+                        var shuffleArray = chancer.shuffleArray([1,2,3,4,5,6,7,8,9]);
+                        $('#shuffleArray').find('p').text(shuffleArray);
 
-                    var fillArray = chancer.fillArray(1,10);
-                    $('#fillArray').find('p').text(fillArray);
+                        var fillArray = chancer.fillArray(1,10);
+                        $('#fillArray').find('p').text(fillArray);
 
-                    var fillArrayB = chancer.fillArray(1,100,10);
-                    $('#fillArrayB').find('p').text(fillArrayB);
+                        var fillArrayB = chancer.fillArray(1,100,10);
+                        $('#fillArrayB').find('p').text(fillArrayB);
 
-                    var uuid = chancer.uuid();
-                    $('#uuid').find('p').text(uuid);
-                }
-                generate();
-                $('.column').on('click', 'button', function(event) {
-                    event.preventDefault();
+                        var uuid = chancer.uuid();
+                        $('#uuid').find('p').text(uuid);
+                    }
                     generate();
+                    $('.column').on('click', 'button', function(event) {
+                        event.preventDefault();
+                        generate();
+                    });
                 });
-            });
+            })(jQuery);
         </script>
     </body>
 </html>
