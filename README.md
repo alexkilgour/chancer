@@ -24,6 +24,13 @@ On the client side, you can include the built version of Chancer in your page (f
 <script src="chancer.js"></script>
 ```
 
+## Browser Support
+Tested in the following browsers
+
+Chrome  | Opera | Firefox | Safari | IE | iOS | Android | WindowsPhone
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+![chrome](http://browserbadge.com/chrome/15) | ![Opera](http://browserbadge.com/opera/10) | ![firefox](http://browserbadge.com/firefox/3) | ![safari](http://browserbadge.com/safari/4) |  ![ie](http://browserbadge.com/ie/6) | 3+ | 2.2+ | 8.1+
+
 License
 -------
 
