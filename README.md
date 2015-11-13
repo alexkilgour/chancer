@@ -52,7 +52,7 @@ chancer.float(1, 10); // 2.794354454614222
 ```
 
 ### chancer.int( min, max )
-Generates an integer between *min* (inclusive) and *max* (inclusive)
+Generates an integer between *min* (inclusive) and *max* (inclusive)  
 **min:** *(float)* Minimum inclusive number  
 **max:** *(float)* Maximum inclusive number  
 **return:** *(integer)* Returns the integer number
