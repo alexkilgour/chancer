@@ -114,18 +114,11 @@ function generateArray (min, max, total) {
 // where x is any hexadecimal digit and y is one of 8, 9, A, or B
 // e.g., efe1f2aa-1e99-40f2-83fa-8519acd8c34c
 function uuid () {
-    var hex = '0123456789ABCDEF';
-    var result = [];
-    for (var i = 0; i < 36; i++) {
-        result[i] = Math.floor(Math.random() * 0x10);
-    }
-    result[14] = 4;
-    result[19] = (result[19] & 0x3) | 0x8;
-    for (var index = 0; index < 36; index++) {
-        result[index] = hex[result[index]];
-    }
-    result[8] = result[13] = result[18] = result[23] = '-';
-    return result.join('');
+    var template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+    return template.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
 }
 
 },{}],2:[function(require,module,exports){
