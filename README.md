@@ -94,7 +94,7 @@ If no *total* specified return all possible values between *min* and *max*
 **min:** *(number)* Minimum inclusive number  
 **max:** *(number)* Maximum inclusive number  
 **total:** *(number)* Total number of results | all   
-**return:** *(array)* Returns= the chosen values
+**return:** *(array)* Returns the chosen values
 ```js
 chancer.fillArray(1,10); // [3, 5, 4, 1, 6, 7, 8, 2, 10, 9]
 chancer.fillArray(1,100,10); // [40, 66, 74, 39, 17, 99, 50, 70, 6, 15]
