@@ -67,6 +67,7 @@ function shuffleArray (obj) {
 function shuffle (arr) {
     for (var i = arr.length - 1; i >= 0; i--) {
         var j = chancer.int(0, i);
+        /* istanbul ignore else  */
         if (j !== i) {
             var tmp = arr[i];
             arr[i] = arr[j];
@@ -82,6 +83,7 @@ function fillArray (min, max, total) {
     if (typeof min === 'number' && typeof max === 'number') {
         var num = (total) ? total : (max - min) + 1;
         var arr;
+        /* istanbul ignore else  */
         if (typeof num === 'number' && (((max - min) + 1) >= num)) {
             arr = generateArray(min, max, num);
         }
@@ -97,11 +99,13 @@ function generateArray (min, max, total) {
         var randomNumber = chancer.int(min, max);
         var found = false;
         for (var i = 0; i < arr.length; i++) {
+            /* istanbul ignore else  */
             if (arr[i] === randomNumber) {
                 found = true;
                 break;
             }
         }
+        /* istanbul ignore else  */
         if (!found) {
             arr[arr.length] = randomNumber;
         }
@@ -115,8 +119,9 @@ function generateArray (min, max, total) {
 // e.g., efe1f2aa-1e99-40f2-83fa-8519acd8c34c
 function uuid () {
     var template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
-    return template.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return template.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0;
+        var v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
@@ -9101,7 +9106,7 @@ describe('lib/chancer', function () {
             assert.strictEqual(result, undefined);
         });
 
-        it('should return `undefined` if no arguments are not numbers', function () {
+        it('should return `undefined` if neither argument are numbers', function () {
             var result = chancer.float('zero', 'one');
             assert.strictEqual(result, undefined);
         });
