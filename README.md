@@ -60,6 +60,18 @@ Generates an integer between *min* (inclusive) and *max* (inclusive)
 chancer.int(1, 10); // 3
 ```
 
+### chancer.coinToss( heads, tails )
+Generates a 0 or 1 to represent a coin toss  
+Optionally associate any other values for the coin sides (true/false, yes/no, heads/tails, etc)  
+**heads:** Value for the head  
+**tails:** Value for the tails  
+**return:** Returns the chosen value
+```js
+chancer.coinToss(); // 1
+chancer.coinToss(true, false); // true
+chancer.coinToss('heads', 'tails'); // tails
+```
+
 ## Browser Support
 Tested in the following browsers
 
