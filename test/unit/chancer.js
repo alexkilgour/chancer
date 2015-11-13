@@ -27,46 +27,46 @@ describe('lib/chancer', function () {
         });
     });
 
-    it('should have a `randomFloat` method', function () {
-        assert.isFunction(chancer.randomFloat);
+    it('should have a `float` method', function () {
+        assert.isFunction(chancer.float);
     });
 
-    describe('chancer.randomFloat()', function () {
+    describe('chancer.float()', function () {
         it('should return a floating-point number between 1 and 10', function () {
-            var result = chancer.randomFloat(1, 10);
+            var result = chancer.float(1, 10);
             assert.greaterThanOrEqual(result, 1);
             assert.lessThan(result, 10);
         });
 
         it('should return `undefined` if no arguments specified', function () {
-            var result = chancer.randomFloat();
+            var result = chancer.float();
             assert.strictEqual(result, undefined);
         });
 
         it('should return `undefined` if no arguments are not numbers', function () {
-            var result = chancer.randomFloat('zero', 'one');
+            var result = chancer.float('zero', 'one');
             assert.strictEqual(result, undefined);
         });
     });
 
-    it('should have a `randomInt` method', function () {
-        assert.isFunction(chancer.randomInt);
+    it('should have a `int` method', function () {
+        assert.isFunction(chancer.int);
     });
 
-    describe('chancer.randomInt()', function () {
+    describe('chancer.int()', function () {
         it('should return a integer number between 1 and 10', function () {
-            var result = chancer.randomInt(1, 10);
+            var result = chancer.int(1, 10);
             assert.greaterThanOrEqual(result, 1);
             assert.lessThanOrEqual(result, 10);
         });
 
         it('should return `undefined` if no arguments specified', function () {
-            var result = chancer.randomInt();
+            var result = chancer.int();
             assert.strictEqual(result, undefined);
         });
 
         it('should return `undefined` if no arguments are not numbers', function () {
-            var result = chancer.randomInt('zero', 'one');
+            var result = chancer.int('zero', 'one');
             assert.strictEqual(result, undefined);
         });
     });
@@ -137,20 +137,20 @@ describe('lib/chancer', function () {
         });
     });
 
-    it('should have a `randomArray` method', function () {
-        assert.isFunction(chancer.randomArray);
+    it('should have a `fillArray` method', function () {
+        assert.isFunction(chancer.fillArray);
     });
 
-    describe('chancer.randomArray()', function () {
+    describe('chancer.fillArray()', function () {
         it('should return an array of integers between 0 and 10 (inclusive)', function () {
-            var result = chancer.randomArray(0, 10);
+            var result = chancer.fillArray(0, 10);
             var expected = [0,1,2,3,4,5,6,7,8,9,10];
             assert.isArray(result);
             expect(result).to.deep.have.same.members(expected);
         });
 
         it('should return an array of 5 integers between 0 and 10 (inclusive)', function () {
-            var result = chancer.randomArray(0, 10, 5);
+            var result = chancer.fillArray(0, 10, 5);
             var expected = [0,1,2,3,4,5,6,7,8,9,10];
             assert.isArray(result);
             assert.lengthEquals(5);
@@ -160,13 +160,13 @@ describe('lib/chancer', function () {
         });
     });
 
-    it('should have a `randomUUID` method', function () {
-        assert.isFunction(chancer.randomUUID);
+    it('should have a `uuid` method', function () {
+        assert.isFunction(chancer.uuid);
     });
 
-    describe('chancer.randomUUID()', function () {
+    describe('chancer.uuid()', function () {
         it('should return a random value as a universally unique identifier (UUID) version 4', function () {
-            var result = chancer.randomUUID();
+            var result = chancer.uuid();
             var regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
             assert.match(result, regex);
         });

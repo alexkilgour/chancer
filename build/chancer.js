@@ -4,13 +4,13 @@
 
 var chancer = module.exports = {
     random: random,
-    randomFloat: randomFloat,
-    randomInt: randomInt,
+    float: float,
+    int: int,
     coinToss: coinToss,
     fromArray: fromArray,
     shuffleArray: shuffleArray,
-    randomArray: randomArray,
-    randomUUID: randomUUID
+    fillArray: fillArray,
+    uuid: uuid
 };
 
 // Returns a floating-point number between 0 and 1
@@ -19,8 +19,8 @@ function random () {
 }
 
 // Returns a random number between <min> (inclusive) and <max> (exclusive)
-function randomFloat (min, max) {
-    if (!isNaN(min) && !isNaN(max)) {
+function float (min, max) {
+    if (typeof min === 'number' && typeof max === 'number') {
         return Math.random() * (max - min) + min;
     }
     else {
@@ -29,8 +29,8 @@ function randomFloat (min, max) {
 }
 
 // Returns a random integer between <min> (inclusive) and <max> (inclusive)
-function randomInt (min, max) {
-    if (!isNaN(min) && !isNaN(max)) {
+function int (min, max) {
+    if (typeof min === 'number' && typeof max === 'number') {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     else {
@@ -67,7 +67,7 @@ function shuffleArray (obj) {
 }
 function shuffle (arr) {
     for (var i = arr.length - 1; i >= 0; i--) {
-        var j = chancer.randomInt(0, i);
+        var j = chancer.int(0, i);
         if (j !== i) {
             var tmp = arr[i];
             arr[i] = arr[j];
@@ -79,11 +79,11 @@ function shuffle (arr) {
 
 // Returns an array of integers between <min> (inclusive) and <max> (inclusive)
 // If no <total> specified return all possible values between <min> and <max>
-function randomArray (min, max, total) {
-    if (!isNaN(min) && !isNaN(max)) {
+function fillArray (min, max, total) {
+    if (typeof min === 'number' && typeof max === 'number') {
         var num = (total) ? total : (max - min) + 1;
         var arr;
-        if (!isNaN(num) && (((max - min) + 1) >= num)) {
+        if (typeof num === 'number' && (((max - min) + 1) >= num)) {
             arr = generateArray(min, max, num);
         }
         return arr;
@@ -95,7 +95,7 @@ function randomArray (min, max, total) {
 function generateArray (min, max, total) {
     var arr = [];
     while (arr.length < total) {
-        var randomNumber = chancer.randomInt(min, max);
+        var randomNumber = chancer.int(min, max);
         var found = false;
         for (var i = 0; i < arr.length; i++) {
             if (arr[i] === randomNumber) {
@@ -114,7 +114,7 @@ function generateArray (min, max, total) {
 // xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
 // where x is any hexadecimal digit and y is one of 8, 9, A, or B
 // e.g., efe1f2aa-1e99-40f2-83fa-8519acd8c34c
-function randomUUID () {
+function uuid () {
     var hex = '0123456789ABCDEF';
     var result = [];
     for (var i = 0; i < 36; i++) {
@@ -122,8 +122,8 @@ function randomUUID () {
     }
     result[14] = 4;
     result[19] = (result[19] & 0x3) | 0x8;
-    for (var i = 0; i < 36; i++) {
-        result[i] = hex[result[i]];
+    for (var index = 0; index < 36; index++) {
+        result[index] = hex[result[index]];
     }
     result[8] = result[13] = result[18] = result[23] = '-';
     return result.join('');
