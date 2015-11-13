@@ -43,7 +43,7 @@ describe('lib/chancer', function () {
             assert.strictEqual(result, undefined);
         });
 
-        it('should return `undefined` if no arguments are not numbers', function () {
+        it('should return `undefined` if neither argument are numbers', function () {
             var result = chancer.float('zero', 'one');
             assert.strictEqual(result, undefined);
         });
