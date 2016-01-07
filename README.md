@@ -18,22 +18,34 @@ You can use Chancer on the server side with [Node.js](node) and npm:
 npm install chancer
 ```
 
+you can then include *Chancer* in your script by using require:
+
+```js
+var chancer = require('chancer');
+```
+
 On the client side, you can include *Chancer* in your page (found in [build/chancer.js](build/chancer.js)):
 
 ```html
 <script src="chancer.js"></script>
 ```
 
-Usage
------
+If you're including via a ```<script>``` tag, ```chancer``` is available as a global variable.
 
-In Node.js you can include *Chancer* in your script by using require:
+Seeding
+-------
 
+You can specify a particular seed in order to get a repeatable random sequence:
+
+### chancer.seed(num)
+Generates a seed that will always produce the same random sequence
+**num:** *(number)* Integer to use as seed 
 ```js
-var chancer = require('chancer');
+chancer.seed(123);
 ```
 
-If you're including via a ```<script>``` tag, ```chancer``` is available as a global variable.
+Methods
+-------
 
 ### chancer.random()
 Generates a floating-point number between 0 and 1  
