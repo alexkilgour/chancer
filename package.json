@@ -8,7 +8,12 @@
     "array",
     "integer",
     "float",
-    "cryptography"
+    "cryptography",
+    "generator",
+    "mersenne",
+    "twister",
+    "seed",
+    "mersennetwister"
   ],
   "author": "Alex Kilgour",
   "repository": {
@@ -34,6 +39,10 @@
   },
   "main": "./lib/chancer.js",
   "scripts": {
-    "test": "make ci"
+    "test": "make ci",
+    "build": "make bundle"
+  },
+  "dependencies": {
+    "mersenne-twister": "^1.0.1"
   }
 }
