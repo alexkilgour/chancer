@@ -139,7 +139,7 @@ Copyright &copy; 2015, Alex Kilgour
 [info-build]: https://travis-ci.org/howlingmad/chancer
 
 [shield-npm]: https://img.shields.io/npm/v/chancer.svg
-[shield-node]: https://img.shields.io/badge/node.js%20support-0.10–4-brightgreen.svg
+[shield-node]: https://img.shields.io/badge/node.js%20support-0.12–4-brightgreen.svg
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
 [shield-coverage]: https://img.shields.io/coveralls/howlingmad/chancer.svg
 [shield-build]: https://img.shields.io/travis/howlingmad/chancer/master.svg
