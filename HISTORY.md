@@ -1,8 +1,12 @@
 # History
 
+## 2.0.1 (2016-01-07)
+
+ * Add example webpage via github pages
+
 ## 2.0.0 (2016-01-07)
 
- * Adding mersenne twister
+ * Add mersenne twister as random method
 
 ## 1.0.1 (2015-11-13)
 
