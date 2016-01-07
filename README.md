@@ -1,7 +1,7 @@
 Chancer
 =======
 
-Tools for generating random behaviour in Javascript.
+Simple collection of tools for generating random behaviour in Javascript. Uses a [Mersenne Twister](https://www.npmjs.com/package/mersenne-twister) for more accurate random behaviour and repeatability.
 
 [![NPM version][shield-npm]][info-npm]
 [![Node.js version support][shield-node]][info-node]
@@ -18,22 +18,34 @@ You can use Chancer on the server side with [Node.js](node) and npm:
 npm install chancer
 ```
 
+you can then include *Chancer* in your script by using require:
+
+```js
+var chancer = require('chancer');
+```
+
 On the client side, you can include *Chancer* in your page (found in [build/chancer.js](build/chancer.js)):
 
 ```html
 <script src="chancer.js"></script>
 ```
 
-Usage
------
+If you're including via a ```<script>``` tag, ```chancer``` is available as a global variable.
 
-In Node.js you can include *Chancer* in your script by using require:
+Seeding
+-------
 
+You can specify a particular seed in order to get a repeatable random sequence:
+
+### chancer.seed( num )
+Generates a seed that will always produce the same random sequence  
+**num:** *(number)* Integer to use as seed 
 ```js
-var chancer = require('chancer');
+chancer.seed(123);
 ```
 
-If you're including via a ```<script>``` tag, ```chancer``` is available as a global variable.
+Methods
+-------
 
 ### chancer.random()
 Generates a floating-point number between 0 and 1  
@@ -127,7 +139,7 @@ Copyright &copy; 2015, Alex Kilgour
 [info-build]: https://travis-ci.org/howlingmad/chancer
 
 [shield-npm]: https://img.shields.io/npm/v/chancer.svg
-[shield-node]: https://img.shields.io/badge/node.js%20support-0.10–4-brightgreen.svg
+[shield-node]: https://img.shields.io/badge/node.js%20support-0.12–4-brightgreen.svg
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
 [shield-coverage]: https://img.shields.io/coveralls/howlingmad/chancer.svg
 [shield-build]: https://img.shields.io/travis/howlingmad/chancer/master.svg

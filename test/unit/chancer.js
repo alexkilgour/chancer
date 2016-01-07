@@ -4,6 +4,7 @@
 var assert = require('proclaim');
 var expect = require('chai').expect;
 
+// jshint maxstatements:21
 describe('lib/chancer', function () {
     var chancer;
 
@@ -13,6 +14,27 @@ describe('lib/chancer', function () {
 
     it('should be an object', function () {
         assert.isObject(chancer);
+    });
+
+    it('should have a `seed` method', function () {
+        assert.isFunction(chancer.seed);
+    });
+
+    describe('chancer.seed()', function () {
+        it('should return true if a valid integer is passed', function () {
+            var result = chancer.seed(123);
+            assert.strictEqual(result, true);
+        });
+
+        it('should return `undefined` if no arguments specified', function () {
+            var result = chancer.seed();
+            assert.strictEqual(result, undefined);
+        });
+
+        it('should return `undefined` if a non-integer argument is specified', function () {
+            var result = chancer.seed('string');
+            assert.strictEqual(result, undefined);
+        });
     });
 
     it('should have a `random` method', function () {
