@@ -38,7 +38,7 @@ Seeding
 You can specify a particular seed in order to get a repeatable random sequence:
 
 ### chancer.seed(num)
-Generates a seed that will always produce the same random sequence
+Generates a seed that will always produce the same random sequence  
 **num:** *(number)* Integer to use as seed 
 ```js
 chancer.seed(123);
