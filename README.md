@@ -1,15 +1,15 @@
 Chancer
 =======
 
-Simple collection of tools for generating random behaviour in Javascript. Uses a [Mersenne Twister](https://www.npmjs.com/package/mersenne-twister) for more accurate random behaviour and repeatability.
-
-Try out the [test page](http://howlingmad.github.io/chancer/) in your browser.
-
 [![NPM version][shield-npm]][info-npm]
 [![Node.js version support][shield-node]][info-node]
 [![MIT licensed][shield-license]][info-license]
 [![Code coverage][shield-coverage]][info-coverage]
 [![Build status][shield-build]][info-build]
+
+Simple collection of tools for generating random behaviour in Javascript. Uses a [Mersenne Twister](https://www.npmjs.com/package/mersenne-twister) for more accurate random behaviour and repeatability.
+
+Try out the [test page](http://howlingmad.github.io/chancer/) in your browser.
 
 Getting Started
 ---------------
